@@ -1,0 +1,63 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1475965894430-b05c9d13568a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9");
+  /* no-repeat cover center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h2 {
+  font-weight: 700;
+  padding: 0 2rem;
+}
+
+.btn-success,
+.btn-info,
+.survey {
+  padding: 1.5rem;
+  font-size: 2rem;
+}
+
+.btn-block {
+  width: 80%;
+  margin: auto;
+}
+
+.footer {
+  background-color: lightgray;
+  font-size: 1.5rem;
+}
+
+.questions {
+  text-align: left;
+  padding: 20px;
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  height: 1rem;
+  background: beige;
+  width: 100%;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  width: 30px;
+  /* Set a specific slider handle width */
+  height: 30px;
+  /* Slider handle height */
+
+  border-radius: 50%;
+  background: rgb(0, 167, 56);
+
+  cursor: pointer;
+  /* Cursor on hover */
+}
+
+.card-title {
+  margin: 50px 0;
+}

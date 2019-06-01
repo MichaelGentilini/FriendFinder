@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta author="Michael Gentilini">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="../../style.css">
+  <title>Friend Finder Survey</title>
+</head>
+
+<body>
+
+  <!-- ? Jumbotron -->
+
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid text-center mt-5">
+      <div class="container">
+        <h1 class="display-3"> <i class="fas fa-user-friends"></i> &nbsp;Friend Finder&nbsp;&nbsp;<i
+            class="fas fa-user-friends"></i></h1>
+        <p class="lead">Answer a few questions to be matched with your perfect</p>
+
+        <a class="btn btn-primary btn-lg btn-info" href="./home.html" role="button"><i
+            class="fas fa-home    "></i>&nbsp;&nbsp;Take Me Home</a>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="container">
+      <div class="card text-left">
+
+        <div class="card-body ">
+          <h2 class="card-title mb-5">On a scale of 1 to 5 with 1 being "least like me" and 5 being "very much like me"
+          </h2>
+          <div class="questions">
+            <h3> How likely are you to sleep past noon on weekends? </h3>
+            <input class="slider" id="q1" type="range" name="q1" min="1" max="5">
+            <br>
+            <h3> My bedroom is clean and organized. </h3>
+            <input class="slider" id="q2" type="range" name="q2" min="1" max="5">
+            <br>
+            <h3> There's nothing better than winning. </h3>
+            <input class="slider" id="q3" type="range" name="q3" min="1" max="5">
+            <br>
+            <h3> I am confident that I am in control of my own destiny. </h3>
+            <input class="slider" id="q4" type="range" name="q4" min="1" max="5">
+            <br>
+            <h3> I am happy when I have nothing to do.</h3>
+            <input class="slider" id="q5" type="range" name="q5" min="1" max="5">
+            <br>
+            <h3> I am stressed right now </h3>
+            <input class="slider" id="q6" type="range" name="q6" min="1" max="5">
+            <br>
+            <h3> I am a generally patient person.</h3>
+            <input class="slider" id="q7" type="range" name="q7" min="1" max="5">
+            <br>
+            <h3> I exercise regularly. </h3>
+            <input class="slider" id="q8" type="range" name="q8" min="1" max="5">
+            <br>
+            <h3> I am do my best work at the last second. </h3>
+            <input class="slider" id="q9" type="range" name="q9" min="1" max="5">
+            <br>
+            <h3> I feel good about myself if I accomplish something every day. </h3>
+            <input class="slider" id="q10" type="range" name="q10" min="1" max="5">
+            <br>
+            <button class="btn btn-block btn-success mt-5 mb-5" type="button" data-toggle="modal"
+              data-target="#friendsModal"><i class="fas fa-user-friends"></i> &nbsp; Submit to find your true
+              match</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ? Modal -->
+  <div class="modal fade bd-example-modal-sm" id="friendsModal" tabindex="-1" role="dialog"
+    aria-labelledby="friendsModalLabel" aria-hidden="true"></div>
+  <div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Here's your Match!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" href="./home.html" class="btn btn-secondary"><i class="fas fa-home"></i>Take Me
+            home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer text-center mt-5">
+    <div class="container"></div>
+    <a href="/api/friends"> API Friends List</a> &nbsp;|&nbsp;
+    <a href="https://github.com/dallasappraiser/FriendFinder.git">GitHub Repo</a> &nbsp;|&nbsp;
+    <a href="https://dallasappraiser.github.io/Portfolio/">My Portfolio</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

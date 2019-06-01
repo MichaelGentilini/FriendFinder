@@ -1,0 +1,27 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "FriendFinder takes in user's responses to a survey and matches them with other users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dallasappraiser/FriendFinder.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "michael gentilini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dallasappraiser/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/dallasappraiser/FriendFinder#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
