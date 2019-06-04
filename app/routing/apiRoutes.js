@@ -36,8 +36,12 @@ module.exports = function (app) {
   app.post("/api/friends", function (req, res) {
     // console.log(req);
     console.log(req.body.name);
-    console.log(req.body)
-    res.send('we have something');
+    console.log(req.body.photo);
+    console.log(req.body.scores);
+
+    friends.push(req.body);
+    // req.
+    // res.send('we have something');
 
     // res.send({
 
