@@ -1,2 +1,4 @@
 .history
 node_modules
+
+Helppful:  https://stackoverflow.com/questions/19059580/client-on-node-uncaught-referenceerror-require-is-not-defined
