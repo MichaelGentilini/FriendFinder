@@ -3,6 +3,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+// var router = require('Router');
+
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -21,6 +23,14 @@ require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
 app.use(express.static("app/public"));
+
+
+
+// var server = http.createServer(function (request, response) {
+//   router.css(request, response);
+//   router.home(request, response);
+//   router.user(request, response);
+// });
 
 // Starts the server to begin listening
 // =============================================================
