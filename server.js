@@ -24,14 +24,6 @@ require("./app/routing/htmlRoutes")(app);
 
 app.use(express.static("app/public"));
 
-
-
-// var server = http.createServer(function (request, response) {
-//   router.css(request, response);
-//   router.home(request, response);
-//   router.user(request, response);
-// });
-
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function () {

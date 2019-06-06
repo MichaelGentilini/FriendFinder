@@ -36,51 +36,50 @@
         <div class="card-body ">
           <form id="sendFriend" class="send-friend" action="/api/friends" method="post">
             <h2 class="card-title mb-1">Answer each of the questions on a scale of 1 to 5 with 1 being "least like me"
-              and
-              5 being "very much like me"
+              and 5 being "very much like me"
             </h2>
             <div class="questions">
               <h3 class="question">Name (required)</h3>
-              <input type="text" id="name" name="name" class="form-control" required="">
+              <input type="text" id="name" name="name" class="form-control" required>
 
               <h3 class="question">Link to Photo (required)</h3>
-              <input type="text" id="photo" class="form-control" required="">
+              <input type="text" id="photo" class="form-control" required>
 
-              <h3 class="question"> How likely are you to sleep past noon on weekends? </h">
-                <input class="custom-range slider" id="q1" type="range" name="q1" min="1" max="5">
-                <br>
-                <h3 class="question"> My bedroom is clean and organized. </h3>
-                <input class="custom-range slider" id="q2" type="range" name="q2" min="1" max="5">
-                <br>
-                <h3 class="question"> There's nothing better than winning. </h3>
-                <input class="custom-range slider" id="q3" type="range" name="q3" min="1" max="5">
-                <br>
-                <h3 class="question"> I am confident that I am in control of my own destiny. </h">
-                  <input class="custom-range slider" id="q4" type="range" name="q4" min="1" max="5">
-                  <br>
-                  <h3 class="question"> I am happy when I have nothing to do.</h3>
-                  <input class="custom-range slider" id="q5" type="range" name="q5" min="1" max="5">
-                  <br>
-                  <h3 class="question"> I am stressed right now </h3>
-                  <input class="custom-range slider" id="q6" type="range" name="q6" min="1" max="5">
-                  <br>
-                  <h3 class="question"> I am a generally patient person.</h3>
-                  <input class="custom-range slider" id="q7" type="range" name="q7" min="1" max="5">
-                  <br>
-                  <h3 class="question"> I exercise regularly. </h3>
-                  <input class="custom-range slider" id="q8" type="range" name="q8" min="1" max="5">
-                  <br>
-                  <h3 class="question"> I am do my best work at the last second. </h3>
-                  <input class="custom-range slider" id="q9" type="range" name="q9" min="1" max="5">
-                  <br>
-                  <h3 class="question"> I feel good about myself if I accomplish something every day. </h3>
-                  <input class="custom-range slider" id="q10" type="range" name="q10" min="1" max="5">
-                  <br>
-                  <button class="btn btn-block btn-success mt-5 mb-5" id="submitFriend" type="button" method="post"><i
-                      class="fas fa-user-friends"></i> &nbsp; Submit
-                    to
-                    find your true
-                    match</button>
+              <h3 class="question"> How likely are you to sleep past noon on weekends? </h3>
+              <input class="custom-range slider" id="q1" type="range" name="q1" min="1" max="5">
+              <br>
+              <h3 class="question"> My bedroom is clean and organized. </h3>
+              <input class="custom-range slider" id="q2" type="range" name="q2" min="1" max="5">
+              <br>
+              <h3 class="question"> There's nothing better than winning. </h3>
+              <input class="custom-range slider" id="q3" type="range" name="q3" min="1" max="5">
+              <br>
+              <h3 class="question"> I am confident that I am in control of my own destiny. </h3>
+              <input class="custom-range slider" id="q4" type="range" name="q4" min="1" max="5">
+              <br>
+              <h3 class="question"> I am happy when I have nothing to do.</h3>
+              <input class="custom-range slider" id="q5" type="range" name="q5" min="1" max="5">
+              <br>
+              <h3 class="question"> I am stressed right now </h3>
+              <input class="custom-range slider" id="q6" type="range" name="q6" min="1" max="5">
+              <br>
+              <h3 class="question"> I am a generally patient person.</h3>
+              <input class="custom-range slider" id="q7" type="range" name="q7" min="1" max="5">
+              <br>
+              <h3 class="question"> I exercise regularly. </h3>
+              <input class="custom-range slider" id="q8" type="range" name="q8" min="1" max="5">
+              <br>
+              <h3 class="question"> I am do my best work at the last second. </h3>
+              <input class="custom-range slider" id="q9" type="range" name="q9" min="1" max="5">
+              <br>
+              <h3 class="question"> I feel good about myself if I accomplish something every day. </h3>
+              <input class="custom-range slider" id="q10" type="range" name="q10" min="1" max="5">
+              <br>
+              <button class="btn btn-block btn-success mt-5 mb-5" id="submitFriend" type="button" method="post"><i
+                  class="fas fa-user-friends"></i> &nbsp; Submit
+                to
+                find your true
+                match</button>
           </form>
         </div>
 
@@ -89,7 +88,7 @@
     </div>
   </section>
 
-  <footer class="footer text-center mt-5">
+  <footer class="footer text-center mt-2 mb-5">
     <div class="container"></div>
     <a href="/api/friends"> API Friends List</a> &nbsp;|&nbsp;
     <a href="https://github.com/dallasappraiser/FriendFinder.git">GitHub Repo</a> &nbsp;|&nbsp;
@@ -126,22 +125,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script>
-  // 
-
-  // app.post("/api/friends", function (req, res) {
-  //   // console.log(req);
-  //   console.log(req.body.name);
-  //   console.log(req.body)
-  //   res.send('we have something');
-  // });
-
   // ? add event listener to submit button
   var answers = $('.questions').find(".slider");
   console.log('Values');
-  for (let i = 0; i < answers.length; i++) {
-    // console.log($(this).value)
-    console.log([i] + " : " + answers[i].value)
-  }
+
+  // ! experimenting with this value
+  // function getVal() {
+  //   answers.each(function () {
+  //     console.log(parseInt($(this).val()) += parseInt($(this).val()))
+  //   });
+  // }
+
+  // getVal();
+
+  // // show values
+  //   for (let i = 0; i < answers.length; i++) {
+  //     // console.log($(this).value)
+  //     console.log([i] + " : " + answers[i].value)
+  //   }
 
   // answers.forEach(function (answer) {
   //   console.log(answer)
@@ -159,43 +160,46 @@
   $("#submitFriend").on("click",
     function (event) {
       event.preventDefault();
-      var q1 = $("#q1").val();
-      var q2 = $("#q2").val();
-      var q3 = $("#q3").val();
-      var q4 = $("#q4").val();
-      var q5 = $("#q5").val();
-      var q6 = $("#q6").val();
-      var q7 = $("#q7").val();
-      var q8 = $("#q8").val();
-      var q9 = $("#q9").val();
-      var q10 = $("#q10").val();
-      var newFriend = {
-        name: $("#name").val().trim(),
-        photo: $("#photo").val().trim(),
-        scores: [parseInt(q1), parseInt(q2), parseInt(q3), parseInt(q4), parseInt(q5), parseInt(q6),
-          parseInt(q7), parseInt(q8), parseInt(q9), parseInt(q10)
-        ]
-      };
 
+      // Form validation
 
+      console.log($("#name").val());
+      console.log($("#photo").val());
 
-
-      // newFriend.scores.push(parseInt(q1), parseInt(q2), parseInt(q3), parseInt(q4), parseInt(q5), parseInt(q6),
-      //   parseInt(
-      //     q7), parseInt(q8), parseInt(q9), parseInt(q10));
-      // console.log(newFriend);
-
-      $.post('/api/friends', newFriend)
-        .then(function (data) {
-          console.log('we have data ' + data);
-        })
-
-
-
-      function getSum(total, num) {
-        return total + num;
+      function validateForm() {
+        var isValid = true;
+        console.log($("#name").val());
+        console.log($("#photo").val());
+        if (($("#name").val() === "") || ($("#photo").val() === "")) {
+          isValid = false;
+        }
+        return isValid;
       }
-      console.log("Your score is " + newFriend.scores.reduce(getSum));
+
+      if (validateForm()) {
+        var newFriend = {
+          name: $("#name").val().trim(),
+          photo: $("#photo").val().trim(),
+          scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6")
+            .val(),
+            $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()
+          ]
+        };
+
+        function getSum(total, num) {
+          return total + num;
+          console.log("Your score is " + newFriend.scores.reduce(getSum));
+        }
+
+        $.post('/api/friends', newFriend)
+          .then(function (data) {
+            console.log('we have data ' + data);
+          })
+
+      } else {
+        alert('You forgot to enter some info');
+      }
+
     });
 </script>
 

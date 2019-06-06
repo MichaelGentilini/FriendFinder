@@ -34,21 +34,40 @@ module.exports = function (app) {
   });
 
   app.post("/api/friends", function (req, res) {
-    // console.log(req);
     console.log(req.body.name);
     console.log(req.body.photo);
+
+    var difference = 0;
+    var match = {
+      name: req.body.name,
+      photo: req.body.photo,
+      scores: difference
+    }
+
+    console.log(match);
+
+    console.log("\n\t\t----- Friend Scores ----\n");
+    friends.forEach(function (friend) {
+      console.log(friend.scores);
+    })
+
+    console.log("\n\t\t----- Your Scores ----\n");
     console.log(req.body.scores);
 
+    function getSum(total, num) {
+      return parseInt(total) + parseInt(num + 0);
+    }
+    var sum = req.body.scores.reduce(getSum);
+    console.log(sum);
+
+
+    // req.body.scores.forEach(score => {
+    //   return parseInt(difference += score);
+    // })
+    // console.log(difference);
+
+    // ! The current user needs to be pushed after the match has been made
     friends.push(req.body);
-    // req.
-    // res.send('we have something');
-
-    // res.send({
-
-    //   friends
-    // });
-
-
   });
 
 
