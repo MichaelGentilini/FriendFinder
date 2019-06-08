@@ -41,7 +41,7 @@ module.exports = function (app) {
       photo: req.body.photo,
       scores: req.body.scores,
     };
-
+    console.log(user);
     // ! function to add scores together
     function getSum(total, num) {
       return parseInt(total) + parseInt(num);
