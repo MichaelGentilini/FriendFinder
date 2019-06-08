@@ -77,10 +77,11 @@ module.exports = function (app) {
 
     console.log("\n\n😊  😊  " + user.name + ", your match is " + friends[match].name + " 😊  😊");
     // ? The current user needs to be pushed after the match has been made
+
     friends.push(user);
 
 
     // ! Show the Match
-    res.json(match);
+    res.json(friends[match]);
   }); //post /api/friends
 } //module.exports

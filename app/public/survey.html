@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta author="Michael Gentilini">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
   <title>Friend Finder Survey</title>
-  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -76,8 +76,9 @@
               <h3 class="question"> I feel good about myself if I accomplish something every day. </h3>
               <input class="custom-range slider" id="q10" type="range" name="q10" min="1" max="5">
               <br>
-              <button class="btn btn-block btn-success mt-5 mb-5" id="submitFriend" type="submit" method="post"><i
-                  class="fas fa-user-friends"></i> &nbsp; Submit
+              <button class="btn btn-block btn-success mt-5 mb-5" id="submitFriend" name="submitFriend"
+                data-toggle="modal" data-target="#resultsModal" type="submit"><i class="fas fa-user-friends"></i> &nbsp;
+                Submit
                 to
                 find your true
                 match</button>
@@ -98,18 +99,20 @@
   </footer>
 
   <!-- Modal -->
-  <div id="results-modal" class="modal fade" role="dialog">
+  <div id="resultsModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h2 class="modal-title"><strong>Best Match</strong></h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <img id="match-img" src="https://inspiringtips.com/wp-content/uploads/2017/09/signs-of-true-love-in-LDR.jpg">
+          <img id="match-img" style="height:250px;max-width: 100%;"
+            src="https://d3avoj45mekucs.cloudfront.net/rojakdaily/media/jessica-chua/entertainment/2018/oct/he110%20channel%20introduction/hello_main.jpg?ext=.jpg"
+            alt="Placeholder image in case no user image">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -118,42 +121,14 @@
 
     </div>
   </div>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
-  // ? add event listener to submit button
-  var answers = $('.questions').find(".slider");
-  console.log('Values');
-
-  // ! experimenting with this value
-  // function getVal() {
-  //   answers.each(function () {
-  //     console.log(parseInt($(this).val()) += parseInt($(this).val()))
-  //   });
-  // }
-
-  // getVal();
-
-  // // show values
-  //   for (let i = 0; i < answers.length; i++) {
-  //     // console.log($(this).value)
-  //     console.log([i] + " : " + answers[i].value)
-  //   }
-
-  // answers.forEach(function (answer) {
-  //   console.log(answer)
-  //   // console.log('hi')
-  //   // console.log(this.value);
-  // })
-
-
-  // answers.forEach(input =
-
-  // console.log(this.value);
-
   function clearResults() {
     console.log($("#name").val(' '));
     console.log($("#photo").val(' '));
@@ -164,13 +139,9 @@
       event.preventDefault();
 
       // Form validation
-      console.log($("#name").val());
-      console.log($("#photo").val());
-
       function validateForm() {
         var isValid = true;
-        console.log($("#name").val());
-        console.log($("#photo").val());
+        console.log('form validated');
         if (($("#name").val() === "") || ($("#photo").val() === "")) {
           isValid = false;
         }
@@ -188,27 +159,24 @@
           ]
         };
 
-        function getSum(total, num) {
-          return total + num;
-          console.log("Your score is " + newFriend.scores.reduce(getSum));
-        }
-
         $.post('/api/friends', newFriend)
           .then(function (data) {
 
+            console.log(data.name);
+            console.log(data.photo);
             // ? Get results from post so that the best match's name and photo are displayed.
             $("#match-name").text(data.name);
             $("#match-img").attr("src", data.photo);
 
             // Show the modal with the best match
-            $("#results-modal").modal("toggle");
-            clearResults();
+            $("#resultsModal").modal("toggle");
+
           });
       } else {
         alert('You forgot to enter some info');
       }
 
-
+      clearResults();
 
     });
 </script>
