@@ -1,29 +1,21 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
-
-var friends = require("../data/friends");
-// var newFriends = require("../public/js/index");
-
 module.exports = function (app) {
-  app.get("/api/friends", function (req, res) {
-    res.json(friends);
-    console.log(req.path);
-  });
+  // // var express = require("express");
+  // var path = require("path");
+  // var fs = require("fs");
+  var friends = require("../data/friends");
 
-  // ? get single friend
 
+  // ? get single friend **Not necessary but done for learning
   app.get("/api/friends/:name", function (req, res, next) {
-    for (let i = 0; i < friends.length; i++) {
+    for (var i = 0; i < friends.length; i++) {
       var name = friends[i].name;
     }
 
+    // ? Search if a friend exists by name
     if (name === req.params.name) {
       res.status(200).json({
         msg: req.params.name + " found"
       });
-      // res.send(req.params.name + " found");
-      // res.json(friends);
     } else {
       res.status(400).json({
         msg: req.params.name + " not found"
@@ -33,115 +25,62 @@ module.exports = function (app) {
     console.log("param", req.params.name);
   });
 
-  app.post("/api/friends", function (req, res) {
-    console.log(req.body.name);
-    console.log(req.body.photo);
 
-    var difference = 0;
-    var match = {
-      name: req.body.name,
-      photo: req.body.photo,
-      scores: difference
-    }
-
-    console.log(match);
-
-    console.log("\n\t\t----- Friend Scores ----\n");
-    friends.forEach(function (friend) {
-      console.log(friend.scores);
-    })
-
-    console.log("\n\t\t----- Your Scores ----\n");
-    console.log(req.body.scores);
-
-    function getSum(total, num) {
-      return parseInt(total) + parseInt(num + 0);
-    }
-    var sum = req.body.scores.reduce(getSum);
-    console.log(sum);
-
-
-    // req.body.scores.forEach(score => {
-    //   return parseInt(difference += score);
-    // })
-    // console.log(difference);
-
-    // ! The current user needs to be pushed after the match has been made
-    friends.push(req.body);
+  // ? get /api/friends
+  app.get("/api/friends", function (req, res) {
+    res.json(friends);
+    console.log(req.path);
   });
 
+  // ? This is where the magic happens
+  app.post("/api/friends", function (req, res) {
+    // var totalDiff;
+    var diffArr = []; // * this is needed to score the differences
+    var user = {
+      name: req.body.name,
+      photo: req.body.photo,
+      scores: req.body.scores,
+    };
 
-  // res.json(friends.filter(function (friend) {
+    // ! function to add scores together
+    function getSum(total, num) {
+      return parseInt(total) + parseInt(num);
+    }
+    // !  map scores from integer to numbers
+    var userTotal = req.body.scores.map(function (count) {
+      return parseInt(count, 10);
+    });
 
-  //   // console.log(friend.name, req.params.name)
-  //   friend.name == req.params.name
-  //   console.log(req.params.name)
-  //   // console.log('found him')
-  // }))
+    // !  use reduce to get current user total
+    userTotal = userTotal.reduce(getSum);
 
-  // 
-  //   var difference = 0;
-  //   var match = {
-  //     name: "",
-  //     photo: "",
-  //     friendDifference: 1000
-  //   };
+    console.log("\n\t\t----- Current User ----\n");
+    console.log("Name: " + user.name);
+    console.log("Total: " + userTotal);
 
-  //   var user = req.body;
-  //   var userName = user.name;
-  //   var userScore = user.scores;
+    console.log('\n\t\t--- There are ' + friends.length + ' friends ---');
 
-  //   var b = userScore.map(function (count) {
-  //     return parseInt(count, 10);
-  //   });
+    for (let i = 0; i < friends.length; i++) {
+      console.log("\nName: \t\t", friends[i].name);
 
-  //   user = {
-  //     name: req.body.name,
-  //     photo: req.body.photo,
-  //     scores: b
-  //   };
+      var friendsScore = friends[i].scores.reduce(getSum);
+      console.table[friends];
+      console.log("Total: \t\t " + friendsScore);
+      friendsDifference = Math.abs(userTotal - friendsScore);
+      console.log('Diff: \t', friendsDifference);
 
-  //   console.log("name " + userName);
-  //   console.log("scores " + userScore);
+      //?  push the differences of each friend to an array
+      diffArr.push(friendsDifference);
+    }
+    // ? Assign the index of the lowest number in the array to match
+    var match = diffArr.indexOf(Math.min(...diffArr));
 
-  //   var sum = b.reduce(function (total, num) {
-  //     return total + num;
-  //   })
-  //   console.log("sum of scores is " + sum);
-  //   console.log("bestmatch diff " + match.difference);
+    console.log("\n\n😊  😊  " + user.name + ", your match is " + friends[match].name + " 😊  😊");
+    // ? The current user needs to be pushed after the match has been made
+    friends.push(user);
 
-  //   // Displays all friends in the database
-  //   // app.get("/api/friends", function (req, res) {
-  //   //   return res.json(friends);
-  //   // });
-  //   for (let i = 0; i < friends.length; i++) {
-  //     console.log(friends[i].name);
-  //     difference = 0;
-  //     console.log(difference);
-  //     console.log(match.difference);
 
-  //     var matchScore = b.reduce(function (total, num) {
-  //       return total + num;
-  //     });
-  //     console.log("friendsScore " + matchScore);
-  //     difference += Math.abs(sum - matchScore);
-  //     console.log('------------------------------' + difference);
-
-  //     if (difference <= match.difference) {
-  //       match.name = friends[i].name;
-  //       match.photo = friends[i].photo;
-  //       match.scores = friends[i].scores;
-  //     }
-  //     console.log(difference);
-
-  //   }
-
-  //   console.log(match);
-  //   friends.push(user);
-  //   console.log("new user added");
-  //   console.log(user);
-  //   res.json(match);
-
-  //   // Create New friends - takes in JSON input
-  // });
-};
+    // ! Show the Match
+    res.json(match);
+  }); //post /api/friends
+} //module.exports

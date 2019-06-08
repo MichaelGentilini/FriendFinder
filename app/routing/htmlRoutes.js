@@ -14,13 +14,6 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "..", "public", "home.html"));
   });
 
-  // set static folder /
+  // ? set static folder /
   app.use(express.static(path.join(__dirname, "..", "public")));
-
-
-  app.get("/main.html", function (req, res, next) {
-    res.sendFile(__dirname, +'/main.html');
-
-  });
-
 };

@@ -10,6 +10,7 @@ var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 5000;
 
+// ! middleware to parse to req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -19,13 +20,14 @@ app.use(bodyParser.json({
   type: "application/vnd.api+json"
 }));
 
+app.use(express.static("app/public"));
+
 require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
-app.use(express.static("app/public"));
 
-// Starts the server to begin listening
-// =============================================================
+// ! Start server listening
+
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
